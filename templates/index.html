@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Comparison</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Compare Dish Images</h2>
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Upload Required Dish Image:</label>
+                <input type="file" class="form-control" name="required_image" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Upload Derived Dish Image:</label>
+                <input type="file" class="form-control" name="derived_image" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Compare</button>
+        </form>
+
+        {% if suggestions %}
+            <div class="mt-4">
+                <h4>Suggestions for Improvement:</h4>
+                <div class="card p-3 bg-light">
+                    <p>{{ suggestions | safe }}</p>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="alert alert-danger mt-4">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
