@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask_cors import CORS
 import google.generativeai as genai
 from PIL import Image
 import io
@@ -10,6 +11,8 @@ load_dotenv()
 
 # Set up Flask app
 app = Flask(__name__)
+
+CORS(app)
 
 key = os.getenv("GEMINI_API_KEY")
 
